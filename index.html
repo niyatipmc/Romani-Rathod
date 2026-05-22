@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Priti Medicare - ID Card - Romani Rathod</title>
+<style>
+ @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Montserrat', sans-serif;
+    padding: 40px 20px;
+  }
+
+  .cards-wrapper {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  /* ── CARD BASE ── */
+  .card {
+    width: 310px;
+    min-height: 490px;
+    background: #fff;
+    border-radius: 18px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.18);
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── TOP RED CORNER DECORATION ── */
+  .corner-tr {
+    position: absolute;
+    top: 0; right: 0;
+    width: 90px; height: 90px;
+    background: #ea252f;
+    clip-path: polygon(100% 0, 0 0, 100% 100%);
+    z-index: 1;
+  }
+
+  /* ── LANYARD SLOT ── */
+  .lanyard-slot {
+    width: 46px; height: 18px;
+    background: #d9d9d9;
+    border-radius: 9px;
+    margin: 14px auto 0;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ── HEADER ── */
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 18px 6px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .logo-ganesha {
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+  }
+
+  .brand-name {
+    line-height: 1.1;
+  }
+
+  .brand-name span {
+    display: block;
+    font-size: 20px;
+    font-weight: 800;
+    color: #ea252f;
+    letter-spacing: 0.5px;
+  }
+
+  .tagline {
+    text-align: center;
+    font-size: 9px;
+    color: #555;
+    letter-spacing: 0.3px;
+    padding: 0 18px 10px;
+    font-family: 'Open Sans', sans-serif;
+  }
+
+  /* ── RED DIVIDER ── */
+  .divider-red {
+    height: 3px;
+    background: #ea252f;
+    margin: 0 18px;
+    border-radius: 2px;
+  }
+
+  /* ── FRONT: PHOTO + NAME SECTION ── */
+  .profile-section {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 18px 10px;
+  }
+
+  .photo-wrap {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 3px solid #c0111a;
+    overflow: hidden;
+    flex-shrink: 0;
+    background: #eee;
+  }
+
+  .photo-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  .name-block .emp-name {
+    font-size: 17px;
+    font-weight: 800;
+    color: #1a1a1a;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .name-divider {
+    width: 100%;
+    height: 2px;
+    background: #ea252f;
+    margin: 5px 0;
+    border-radius: 1px;
+  }
+
+  .name-block .designation {
+    font-size: 11px;
+    font-weight: 600;
+    color: #333;
+    line-height: 1.4;
+  }
+
+  /* ── DETAILS LIST ── */
+  .details-list {
+    padding: 8px 18px 4px;
+  }
+
+  .detail-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+
+  .detail-icon {
+    width: 26px;
+    height: 26px;
+    background: #ea252f;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .detail-icon svg {
+    width: 14px;
+    height: 14px;
+    fill: #fff;
+  }
+
+  .detail-label {
+    font-size: 10.5px;
+    font-weight: 600;
+    color: #444;
+    width: 86px;
+    flex-shrink: 0;
+  }
+
+  .detail-colon {
+    font-size: 10.5px;
+    color: #444;
+    margin-right: 4px;
+  }
+
+  .detail-value {
+    font-size: 10.5px;
+    font-weight: 700;
+    color: #ea252f;
+  }
+
+  /* ── BARCODE AREA ── */
+  .barcode-area {
+    padding: 10px 18px 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .barcode-divider {
+    width: 100%;
+    height: 1.5px;
+    background: #ea252f;
+    margin-bottom: 8px;
+    border-radius: 1px;
+  }
+
+  .barcode-svg {
+    width: 200px;
+    height: 36px;
+  }
+
+  /* ── BOTTOM RED WAVE ── */
+  .bottom-wave {
+    margin-top: auto;
+    position: relative;
+    height: 52px;
+  }
+
+  .bottom-wave svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .website-text {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    font-size: 9px;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: 0.5px;
+  }
+
+  /* ══════════════════════════════════════
+     BACK CARD
+  ══════════════════════════════════════ */
+  .back-card .card-header { padding-top: 10px; }
+
+  .back-address-section {
+    padding: 6px 22px 10px;
+    text-align: center;
+    border-top: 1.5px solid #c0111a;
+    border-bottom: 1.5px solid #c0111a;
+    margin: 4px 18px;
+    position: relative;
+  }
+
+  .back-address-section::before,
+  .back-address-section::after {
+    content: '';
+    width: 8px; height: 8px;
+    background: #ea252f;
+    border-radius: 50%;
+    position: absolute;
+    top: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .back-address-section::after {
+    top: auto;
+    bottom: -4px;
+  }
+
+  .back-address-section p {
+    font-size: 10px;
+    color: #333;
+    line-height: 1.7;
+    font-family: 'Open Sans', sans-serif;
+  }
+
+  .back-address-section a {
+    color: #1a73e8;
+    text-decoration: none;
+    font-size: 10px;
+  }
+
+  .emergency-badge {
+    background: #ea252f;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-align: center;
+    padding: 5px 0;
+    margin: 10px 18px 6px;
+    border-radius: 4px;
+  }
+
+  .emergency-number {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 800;
+    color: #1a1a1a;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+
+  .policy-list {
+    padding: 4px 18px 6px;
+  }
+
+  .policy-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 7px;
+  }
+
+  .policy-icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    margin-top: 0;
+  }
+
+  .policy-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .policy-text {
+    font-size: 10px;
+    color: #333;
+    line-height: 1.4;
+    font-family: 'Open Sans', sans-serif;
+  }
+
+  .signature-area {
+    text-align: center;
+    padding: 6px 18px 0;
+    margin-top: auto;
+  }
+
+  .signature-line {
+    width: 100px;
+    height: 1.5px;
+    background: #1a1a1a;
+    margin: 4px auto 2px;
+  }
+
+  .signature-label {
+    font-size: 9px;
+    font-weight: 600;
+    color: #333;
+  }
+
+  .sig-svg {
+    width: 80px;
+    height: 28px;
+  }
+
+  /* print button */
+  .print-btn {
+    margin-top: 24px;
+    display: block;
+    text-align: center;
+  }
+
+  .print-btn button {
+    background: #c0111a;
+    color: #fff;
+    border: none;
+    padding: 10px 28px;
+    font-size: 13px;
+    font-weight: 700;
+    border-radius: 8px;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .print-btn button:hover { background: #a00e15; }
+
+  @media print {
+    body { background: #fff; padding: 0; }
+    .print-btn { display: none; }
+    .cards-wrapper { gap: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div>
+  <div class="cards-wrapper">
+
+    <!-- ══════════ FRONT CARD ══════════ -->
+    <div class="card">
+      <div class="corner-tr"></div>
+      <div class="lanyard-slot"></div>
+
+      <!-- Header -->
+      <div class="card-header">
+        <!-- Ganesha SVG logo (simplified) -->
+        <img src="./PRITI MEDICARE RED ICON.png" alt="" height="40px" width="40px">
+        <div class="brand-name">
+          <span>PRITI</span>
+          <span>MEDICARE</span>
+        </div>
+      </div>
+      <p class="tagline">Caring for Life, Delivering Quality</p>
+      
+      <!-- Profile -->
+      <div class="profile-section">
+        <div class="photo-wrap">
+          <img src="./ROMANI RATHOD PHOTO.jpeg"  />
+        </div>
+        <div class="name-block">
+          <div class="emp-name">Romani Rathod</div>
+          <div class="name-divider"></div>
+          <div class="designation">Accounts  &amp; Sales <br> Coordinator</div>
+        </div>
+      </div>
+
+      <!-- Details -->
+      <div class="details-list">
+        <!-- Emp ID -->
+        <div class="detail-row">
+          <div class="detail-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+          </div>
+          <span class="detail-label">Emp. ID</span>
+          <span class="detail-colon">:</span>
+          <span class="detail-value">PMD006</span>
+        </div>
+        <!-- Mobile -->
+        <div class="detail-row">
+          <div class="detail-icon">
+            <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
+          </div>
+          <span class="detail-label">Mobile</span>
+          <span class="detail-colon">:</span>
+          <span class="detail-value">7504363520</span>
+        </div>
+        <!-- Blood Group -->
+        <div class="detail-row">
+          <div class="detail-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2C7 9 4 13 4 16a8 8 0 0016 0c0-3-3-7-8-14z"/></svg>
+          </div>
+          <span class="detail-label">Blood Group</span>
+          <span class="detail-colon">:</span>
+          <span class="detail-value">O+</span>
+        </div>
+        <!-- Date of Joining -->
+        <div class="detail-row">
+          <div class="detail-icon">
+            <svg viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 18H5V8h14v13zM7 10h5v5H7z"/></svg>
+          </div>
+          <span class="detail-label">Date of Joining</span>
+          <span class="detail-colon">:</span>
+          <span class="detail-value">11/05/2026</span>
+        </div>
+      </div>
+
+      <!-- Barcode -->
+      <!-- <div class="barcode-area">
+        <div class="barcode-divider"></div>
+        <svg class="barcode-svg" viewBox="0 0 200 36" xmlns="http://www.w3.org/2000/svg"> -->
+          <!-- simulated barcode bars -->
+          <!-- <g fill="#111"> -->
+            <!-- <rect x="2" y="0" width="2" height="36"/>
+            <rect x="6" y="0" width="1" height="36"/>
+            <rect x="9" y="0" width="3" height="36"/>
+            <rect x="14" y="0" width="1" height="36"/>
+            <rect x="17" y="0" width="2" height="36"/>
+            <rect x="21" y="0" width="1" height="36"/>
+            <rect x="24" y="0" width="3" height="36"/>
+            <rect x="29" y="0" width="1" height="36"/>
+            <rect x="32" y="0" width="2" height="36"/>
+            <rect x="36" y="0" width="1" height="36"/>
+            <rect x="39" y="0" width="3" height="36"/>
+            <rect x="44" y="0" width="2" height="36"/>
+            <rect x="48" y="0" width="1" height="36"/>
+            <rect x="51" y="0" width="2" height="36"/>
+            <rect x="55" y="0" width="3" height="36"/>
+            <rect x="60" y="0" width="1" height="36"/>
+            <rect x="63" y="0" width="2" height="36"/>
+            <rect x="67" y="0" width="1" height="36"/>
+            <rect x="70" y="0" width="3" height="36"/>
+            <rect x="75" y="0" width="2" height="36"/>
+            <rect x="79" y="0" width="1" height="36"/>
+            <rect x="82" y="0" width="2" height="36"/>
+            <rect x="86" y="0" width="3" height="36"/>
+            <rect x="91" y="0" width="1" height="36"/>
+            <rect x="94" y="0" width="2" height="36"/>
+            <rect x="98" y="0" width="1" height="36"/>
+            <rect x="101" y="0" width="3" height="36"/>
+            <rect x="106" y="0" width="1" height="36"/>
+            <rect x="109" y="0" width="2" height="36"/>
+            <rect x="113" y="0" width="1" height="36"/>
+            <rect x="116" y="0" width="3" height="36"/>
+            <rect x="121" y="0" width="2" height="36"/>
+            <rect x="125" y="0" width="1" height="36"/>
+            <rect x="128" y="0" width="2" height="36"/>
+            <rect x="132" y="0" width="3" height="36"/>
+            <rect x="137" y="0" width="1" height="36"/>
+            <rect x="140" y="0" width="2" height="36"/>
+            <rect x="144" y="0" width="1" height="36"/>
+            <rect x="147" y="0" width="3" height="36"/>
+            <rect x="152" y="0" width="2" height="36"/>
+            <rect x="156" y="0" width="1" height="36"/>
+            <rect x="159" y="0" width="2" height="36"/>
+            <rect x="163" y="0" width="3" height="36"/>
+            <rect x="168" y="0" width="1" height="36"/>
+            <rect x="171" y="0" width="2" height="36"/>
+            <rect x="175" y="0" width="1" height="36"/>
+            <rect x="178" y="0" width="3" height="36"/>
+            <rect x="183" y="0" width="2" height="36"/>
+            <rect x="187" y="0" width="1" height="36"/>
+            <rect x="190" y="0" width="2" height="36"/>
+            <rect x="194" y="0" width="3" height="36"/>
+            <rect x="199" y="0" width="1" height="36"/>
+          </g>
+        </svg>
+      </div> -->
+
+      <!-- Bottom wave -->
+      <div class="bottom-wave">
+        <svg viewBox="0 0 310 52" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+          <path d="M0 30 Q80 0 155 20 Q230 40 310 10 L310 52 L0 52 Z" fill="#c0111a"/>
+          <!-- corner triangles -->
+          <polygon points="0,0 0,52 40,52" fill="#c0111a" opacity="0.5"/>
+        </svg>
+        <div class="website-text"></div>
+      </div>
+    </div>
+    
+    <!-- ══════════ BACK CARD ══════════ -->
+    <div class="card back-card">
+      <div class="corner-tr"></div>
+      <div class="lanyard-slot"></div>
+      
+      <!-- Header -->
+      <div class="card-header">
+        
+        <img src="./PRITI MEDICARE RED ICON.png" alt="" height="40px" width="40px">
+        <div class="brand-name">
+          <span>PRITI</span>
+          <span>MEDICARE</span>
+        </div>
+      </div>
+
+      <!-- Address section -->
+      <div class="back-address-section">
+        <p>206, SF, RATNANJALI SOLITAIRE,</p>
+        <p>NR.OM KARESHWAR TEMPLE,</p>
+        <p>PRENATIRTH DERASAR,</p>
+        <p>SATELLITE-380015</p>
+        <p>Mo: 9825123687, 9375923687</p>
+        <p>EMAIL- <a href="mailto:pritimedicare@gmail.com">pritimedicare@gmail.com</a></p>
+      </div>
+
+      <!-- Emergency Contact -->
+      <div class="emergency-badge">EMERGENCY CONTACT</div>
+      <div class="emergency-number">9375923687</div>
+
+      <div class="divider-red" style="margin: 0 18px 10px;"></div>
+
+      <!-- Policy lines -->
+      <div class="policy-list">
+        <div class="policy-row">
+          <div class="policy-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2L4 6v6c0 5.5 3.4 10.7 8 12 4.6-1.3 8-6.5 8-12V6l-8-4z" stroke="#c0111a" stroke-width="1.8" fill="none"/>
+              <path d="M9 12l2 2 4-4" stroke="#c0111a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <span class="policy-text">This card is the property of PRITI MEDICARE.</span>
+        </div>
+        <div class="policy-row">
+          <div class="policy-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="8" r="4" stroke="#c0111a" stroke-width="1.8"/>
+              <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" stroke="#c0111a" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <span class="policy-text">It must be worn at all times.</span>
+        </div>
+        <div class="policy-row">
+          <div class="policy-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="9" stroke="#c0111a" stroke-width="1.8"/>
+              <line x1="12" y1="8" x2="12" y2="13" stroke="#c0111a" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="12" cy="16" r="1" fill="#c0111a"/>
+            </svg>
+          </div>
+          <span class="policy-text">In case of loss, please inform the admin.</span>
+        </div>
+      </div>
+
+      <!-- Signature -->
+      <div class="signature-area">
+        <img src="./Screenshot 2026-05-20 144058.png" height="30px" width="70px">
+        <div class="signature-line"></div>
+        <div class="signature-label">Authorized Signatory</div>
+      </div>
+
+      <!-- Bottom wave -->
+      <div class="bottom-wave" style="margin-top: 12px;">
+        <svg viewBox="0 0 310 52" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+          <path d="M0 30 Q80 0 155 20 Q230 40 310 10 L310 52 L0 52 Z" fill="#c0111a"/>
+          <polygon points="0,0 0,52 40,52" fill="#c0111a" opacity="0.5"/>
+        </svg>
+      </div>
+    </div>
+
+  </div>
+
+  
+</div>
+
+</body>
+</html>
